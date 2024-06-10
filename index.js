@@ -44,7 +44,7 @@ async function takeScreenshot(url) {
 
 async function checkElementExists(url, selector) {
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox'], });
         const page = await browser.newPage();
         await page.goto(url);
 
