@@ -9,7 +9,13 @@ const selector = process.env.SELECTOR
 const bot_token = process.env.BOT_TOKEN;
 const chatid= process.env.CHATID;
 
-const bot = new TelegramBot(bot_token, { polling: true });
+// const bot = new TelegramBot(bot_token, { polling: true });
+const bot = new TelegramBot(bot_token, { polling: true, request: {
+    agentOptions: {
+        keepAlive: true,
+        family: 4
+    }
+}});
 
 async function takeScreenshot(url) {
     try {
